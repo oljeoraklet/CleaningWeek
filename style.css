@@ -1,0 +1,194 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: "Montserrat", sans-serif;
+	overflow-y: hidden;
+}
+.container,
+.title,
+.room-info,
+.dropdown-menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.container {
+	height: 100vh;
+	width: 100vw;
+	background: linear-gradient(180deg, #3a6186 0%, #000428 100%);
+}
+.test-text {
+	font-size: 5vh;
+	color: white;
+	font-weight: 300;
+}
+.title {
+	margin-top: 15vh;
+	margin-bottom: 5vh;
+	height: 30vh;
+	width: 80%;
+	padding: 0.75rem;
+}
+.title h1 {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 64px;
+	line-height: 78px;
+	color: #ffffff;
+}
+.room-info {
+	position: relative;
+	display: block;
+	width: 80%;
+	height: 50%;
+	margin-bottom: 5vh;
+	border-radius: 1vh;
+}
+
+.button-container {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 30%;
+}
+
+.dropbtn {
+	font-size: 5vh;
+	font-weight: 700;
+	font-style: italic;
+	width: 100%;
+	height: 100%;
+	border-radius: 1.5vh;
+	background: #000428;
+	color: white;
+	border: none;
+}
+.dropdown-menu {
+	width: 100%;
+	height: 100%;
+	padding: 1vh;
+	display: flex;
+	border-radius: 1vh;
+	flex-direction: column;
+	justify-content: space-between;
+	transform: scaleY(0);
+	transform-origin: top;
+	background: rgba(196, 196, 196, 0.2);
+	transition: transform 0.2s ease-in-out;
+}
+.dropdown-menu button {
+	width: 95%;
+	height: 25%;
+	margin: 0.5vh;
+	border-radius: 1vh;
+	font-size: 3vh;
+	font-weight: 700;
+	color: black;
+	border: none;
+}
+.cleaning-info {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 80%;
+	height: 60%;
+	margin-bottom: 5vh;
+	border-radius: 1vh;
+}
+.kitchen-container,
+.shower-container,
+.corridor-container {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	padding: 2vh;
+	transform: scaleY(0);
+	border-radius: 2vh;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: white;
+	transition: transform 0.2s ease;
+}
+.info-container {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	pointer-events: none;
+}
+.fa-times-circle {
+	position: absolute;
+	top: 0;
+	right: 0;
+	scale: 2.5;
+	color: black;
+	z-index: 100;
+}
+.fa-times-circle::after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	right: 4px;
+	top: 4px;
+	background-color: white;
+	color: white;
+	height: 8px;
+	width: 8px;
+}
+
+.header-areas {
+	padding: 2vh;
+}
+.to-dos li {
+	margin: 4vh;
+}
+
+.cleaning-info button {
+	width: 90%;
+	height: 20%;
+	font-weight: 300;
+	font-size: 3vh;
+	border-radius: 1vh;
+	border: none;
+	box-shadow: 3px 5px rgba(196, 196, 196, 0.2);
+}
+
+.cute-dog-video {
+	display: block;
+	position: relative;
+	height: 40vh;
+	width: 40vh;
+	aspect-ratio: 1 / 1;
+	border-radius: 2vh;
+	overflow: hidden;
+	transition: transform 0.2s ease;
+}
+.cute-dog-video video {
+	position: absolute;
+	right: -9vh;
+	object-fit: cover;
+}
+
+.show {
+	transform: scaleY(1);
+	pointer-events: visible;
+}
+.hide {
+	display: none;
+}
+
+.cleaning-week {
+	background: linear-gradient(180deg, #4ecdc4 0%, #000428 100%);
+}
+
+.relax-week {
+	background: linear-gradient(180deg, #e96443 0%, #000428 100%);
+}
