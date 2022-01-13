@@ -89,6 +89,7 @@ body {
 	font-size: 3vh;
 	font-weight: 700;
 	color: black;
+	background: rgba(196, 196, 196, 0.8);
 	border: none;
 }
 .cleaning-info {
