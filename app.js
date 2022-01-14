@@ -36,6 +36,57 @@ const IsItCleaningWeek = (roomNumber) => {
     }
 
 }
+
+const ChangeThePage = (typeOf) => {
+    //Change CSS-settings
+    fullContainer.classList.add(`${typeOf}-week`);
+
+    //Change text
+    headerCleaning.innerHTML = `It's ${typeOf} time!`;
+
+    HideFirstPage();
+
+    if(typeOf === "cleaning") {
+        cleaningInfoContainer.classList.remove('hide')
+    }
+    else {
+        dogVideo.classList.remove('hide')
+    }
+
+    returnButton.classList.remove('hide');
+    
+}
+const HideFirstPage = () => {
+    roomInfo.classList.add('hide');
+}
+
+const ShowRoomInfo = (selRoom) => {
+   cleaningInfos[selRoom].classList.add('show');
+}
+
+const HideRoomInfo = () => {
+    cleaningInfos.forEach((cleaningInfo) => {
+        cleaningInfo.classList.remove('show');
+    })
+}
+
+const ReturnToRoomSelect = () => {
+    if(cleaningInfoContainer.classList.contains('hide')) {
+        dogVideo.classList.add('hide')
+    }
+    else if(dogVideo.classList.contains('hide')){
+        cleaningInfoContainer.classList.add('hide')
+    }
+    roomInfo.classList.remove('hide');
+
+    returnButton.classList.add('hide');
+
+    fullContainer.removeAttribute("class");
+
+    fullContainer.classList.add('container');
+
+    headerCleaning.innerHTML = 'Is it cleaning week?';
+}
 //Adding eventlisteners
 
 //Show the dropdown when the room button is pressed
@@ -76,55 +127,4 @@ returnButton.addEventListener('click', (e) => {
 
 
 
-const ChangeThePage = (typeOf) => {
-    //Change CSS-settings
-    fullContainer.classList.add(`${typeOf}-week`);
-
-    //Change text
-    headerCleaning.innerHTML = `It's ${typeOf} time!`;
-
-    HideFirstPage();
-
-    if(typeOf === "cleaning") {
-        cleaningInfoContainer.classList.remove('hide')
-    }
-    else {
-        dogVideo.classList.remove('hide')
-    }
-
-    returnButton.classList.remove('hide');
-    
-}
-
-const HideFirstPage = () => {
-    roomInfo.classList.add('hide');
-}
-
-const ShowRoomInfo = (selRoom) => {
-   cleaningInfos[selRoom].classList.add('show');
-}
-
-const HideRoomInfo = () => {
-    cleaningInfos.forEach((cleaningInfo) => {
-        cleaningInfo.classList.remove('show');
-    })
-}
-
-const ReturnToRoomSelect = () => {
-    if(cleaningInfoContainer.classList.contains('hide')) {
-        dogVideo.classList.add('hide')
-    }
-    else if(dogVideo.classList.contains('hide')){
-        cleaningInfoContainer.classList.add('hide')
-    }
-    roomInfo.classList.remove('hide');
-
-    returnButton.classList.add('hide');
-
-    fullContainer.removeAttribute("class");
-
-    fullContainer.classList.add('container');
-
-    headerCleaning.innerHTML = 'Is it cleaning week?';
-}
 
