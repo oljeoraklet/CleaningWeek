@@ -41,6 +41,21 @@ body {
 	line-height: 78px;
 	color: #ffffff;
 }
+.return-button {
+	position: absolute;
+	left: 2vh;
+	top: 2vh;
+	height: 8vh;
+	width: 8vh;
+}
+.return-button button {
+	height: 100%;
+	width: 100%;
+	font-size: 4vh;
+	background-color: transparent;
+	border: none;
+	color: white;
+}
 .room-info {
 	position: relative;
 	display: block;
@@ -89,7 +104,6 @@ body {
 	font-size: 3vh;
 	font-weight: 700;
 	color: black;
-	background: rgba(196, 196, 196, 0.8);
 	border: none;
 }
 .cleaning-info {
@@ -157,7 +171,6 @@ body {
 	height: 20%;
 	font-weight: 300;
 	font-size: 3vh;
-	color: black;
 	border-radius: 1vh;
 	border: none;
 	box-shadow: 3px 5px rgba(196, 196, 196, 0.2);
