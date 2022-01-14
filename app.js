@@ -3,7 +3,6 @@ const currentDate = new Date();
 const oneJan = new Date(currentDate.getFullYear(),0,1);
 const numberOfDays = Math.floor((currentDate - oneJan) / (24 * 60 * 60 * 1000));
 const currentWeek = Math.ceil(( currentDate.getDay() + 1 + numberOfDays) / 7);
-const testWeek = 43;
 
 //Selecting HTML elements
 const roomBtn = document.querySelector('.dropbtn');
@@ -17,6 +16,7 @@ const cleaningInfos = document.querySelectorAll('.info-container div');
 const dogVideo = document.querySelector('.cute-dog-video');
 const cleaningInfoContainer = document.querySelector('.cleaning-info ');
 const roomInfo = document.querySelector('.room-info');
+const returnButton = document.querySelector('.return-button');
 
 
 //Constants with room
@@ -56,16 +56,22 @@ exitButtons.forEach((exitButton) => {
     })
 })
 
+returnButton.addEventListener('click', (e) => {
+    ReturnToRoomSelect();
+})
+
 
 
 //Cleaning week calculation
 const IsItCleaningWeek = (roomNumber) => {
 
-    if (testWeek % numberOfRooms === roomNumber){
-        ChangeThePage("cleaning")
+    if (currentWeek % numberOfRooms === roomNumber){
+        console.log(roomNumber);
+       
+        ChangeThePage("cleaning");
     }
     else {
-        ChangeThePage("relax")
+        ChangeThePage("relax");
     }
 
 }
@@ -85,6 +91,9 @@ const ChangeThePage = (typeOf) => {
     else {
         dogVideo.classList.remove('hide')
     }
+
+    returnButton.classList.remove('hide');
+    
 }
 
 const HideFirstPage = () => {
@@ -99,5 +108,23 @@ const HideRoomInfo = () => {
     cleaningInfos.forEach((cleaningInfo) => {
         cleaningInfo.classList.remove('show');
     })
+}
+
+const ReturnToRoomSelect = () => {
+    if(cleaningInfoContainer.classList.contains('hide')) {
+        dogVideo.classList.add('hide')
+    }
+    else if(dogVideo.classList.contains('hide')){
+        cleaningInfoContainer.classList.add('hide')
+    }
+    roomInfo.classList.remove('hide');
+
+    returnButton.classList.add('hide');
+
+    fullContainer.removeAttribute("class");
+
+    fullContainer.classList.add('container');
+
+    headerCleaning.innerHTML = 'Is it cleaning week?';
 }
 
