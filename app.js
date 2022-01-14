@@ -23,6 +23,19 @@ const returnButton = document.querySelector('.return-button');
 const numberOfRooms = roomButtons.length;
 const rooms = [];
 
+//Cleaning week calculation
+const IsItCleaningWeek = (roomNumber) => {
+
+    if (currentWeek % numberOfRooms === roomNumber){
+        console.log(roomNumber);
+       
+        ChangeThePage("cleaning");
+    }
+    else {
+        ChangeThePage("relax");
+    }
+
+}
 //Adding eventlisteners
 
 //Show the dropdown when the room button is pressed
@@ -62,19 +75,6 @@ returnButton.addEventListener('click', (e) => {
 
 
 
-//Cleaning week calculation
-const IsItCleaningWeek = (roomNumber) => {
-
-    if (currentWeek % numberOfRooms === roomNumber){
-        console.log(roomNumber);
-       
-        ChangeThePage("cleaning");
-    }
-    else {
-        ChangeThePage("relax");
-    }
-
-}
 
 const ChangeThePage = (typeOf) => {
     //Change CSS-settings
