@@ -41,6 +41,21 @@ body {
 	line-height: 78px;
 	color: #ffffff;
 }
+.return-button {
+	position: absolute;
+	left: 1vh;
+	top: 2vh;
+	height: 8vh;
+	width: 8vh;
+}
+.return-button button {
+	height: 100%;
+	width: 100%;
+	font-size: 4vh;
+	background-color: transparent;
+	border: none;
+	color: white;
+}
 .room-info {
 	position: relative;
 	display: block;
