@@ -34,7 +34,7 @@ console.log(currentDate);
 console.log("Current week: " + currentWeek);
 
 //Cleaning week calculation
-const isItCleaningWeek = (roomNumber) => {
+const IsItCleaningWeek = (roomNumber) => {
 	if (currentWeek % numberOfRooms === roomNumber) {
 		console.log(roomNumber);
 
@@ -45,7 +45,7 @@ const isItCleaningWeek = (roomNumber) => {
 	}
 };
 
-const changeThePage = (typeOf) => {
+const ChangeThePage = (typeOf) => {
 	//Change CSS-settings
 	fullContainer.classList.add(`${typeOf}-week`);
 
