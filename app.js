@@ -27,11 +27,6 @@ const returnButton = document.querySelector(".return-button");
 const numberOfRooms = roomButtons.length;
 const rooms = [];
 
-console.log(oneJan);
-
-console.log("Number of days since 3 jan: " + numberOfDays);
-console.log(currentDate);
-console.log("Current week: " + currentWeek);
 
 //Cleaning week calculation
 const IsItCleaningWeek = (roomNumber) => {
