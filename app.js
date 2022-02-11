@@ -22,23 +22,56 @@ const dogVideo = document.querySelector(".cute-dog-video");
 const cleaningInfoContainer = document.querySelector(".cleaning-info ");
 const roomInfo = document.querySelector(".room-info");
 const returnButton = document.querySelector(".return-button");
+const currentCleanerDiv = document.querySelector(".current-cleaner");
 
 //Constants with room
 const numberOfRooms = roomButtons.length;
 const rooms = [];
+const currentCleaner = currentWeek % numberOfRooms;
+let chosenRoom;
 
+
+
+
+const checkLocalStorage = () => {
+	if (localStorage.getItem("room") === null) {
+		return;
+	}
+	else {
+		chosenRoom = parseInt(localStorage.getItem("room"));
+		IsItCleaningWeek(chosenRoom);
+	}
+	
+}
 
 //Cleaning week calculation
 const IsItCleaningWeek = (roomNumber) => {
-	if (currentWeek % numberOfRooms === roomNumber) {
-		console.log(roomNumber);
-
+	if (currentCleaner === roomNumber) {
 		ChangeThePage("cleaning");
+		console.log("CLEAN");
 	} else {
 		ChangeThePage("relax");
-		console.log(roomNumber);
 	}
 };
+
+const whenDoIClean = () => {
+	const calcRoom = (rooms.length - currentCleaner) + chosenRoom;
+
+	console.log("Room length: " + rooms.length);
+	console.log("Current cleaner: " + currentCleaner);
+	console.log("Chosen room: " + chosenRoom);
+	console.log(calcRoom);
+
+	if (calcRoom === 1) {
+		return `${calcRoom} vecka`
+	}
+	else if (calcRoom < 7) {
+		return `${calcRoom} veckor`
+	}
+	else {
+		return `${calcRoom - rooms.length} veckor`
+	}
+}
 
 const ChangeThePage = (typeOf) => {
 	//Change CSS-settings
@@ -52,6 +85,9 @@ const ChangeThePage = (typeOf) => {
 	if (typeOf === "cleaning") {
 		cleaningInfoContainer.classList.remove("hide");
 	} else {
+		currentCleanerDiv.classList.remove("hide");
+		currentCleanerDiv.querySelector('h1').innerHTML = `Just nu har ${rooms[currentCleaner]} städvecka`;
+		currentCleanerDiv.querySelector('h2').innerHTML = `Du har städvecka om ${whenDoIClean()}`
 		dogVideo.classList.remove("hide");
 	}
 
@@ -85,6 +121,8 @@ const ReturnToRoomSelect = () => {
 
 	fullContainer.classList.add("container");
 
+	currentCleanerDiv.classList.add("hide");
+
 	headerCleaning.innerHTML = "Is it cleaning week?";
 };
 //Adding eventlisteners
@@ -102,6 +140,8 @@ roomButtons.forEach((roomBtn, index) => {
 
 	roomBtn.addEventListener("click", (e) => {
 		if (e.target !== e.currentTarget) return;
+		chosenRoom = index;
+		localStorage.setItem("room", `${chosenRoom}`);
 		IsItCleaningWeek(index);
 	});
 });
@@ -109,7 +149,7 @@ roomButtons.forEach((roomBtn, index) => {
 cleaningButtons.forEach((cleaningBtn, index) => {
 	cleaningBtn.addEventListener("click", (e) => {
 		if (e.target !== e.currentTarget) return;
-		ShowRoomInfo(index);
+		ShowRoomInfo(chosenRoom);
 	});
 });
 
@@ -123,3 +163,5 @@ exitButtons.forEach((exitButton) => {
 returnButton.addEventListener("click", (e) => {
 	ReturnToRoomSelect();
 });
+
+checkLocalStorage();
